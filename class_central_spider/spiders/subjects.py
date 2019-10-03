@@ -27,7 +27,8 @@ class SubjectsSpider(scrapy.Spider):
                 yield Request(response.urljoin(subject), callback=self.parse_subject)
 
     def parse_subject(self, response):
-        subject_name = response.xpath('//title').extract_first().split(' | ')[0]
+        subject_name = response.xpath(
+            '//title').extract_first().split(' | ')[0]
         subject_name = subject_name.split(' | ')
         subject_name = subject_name[0]
 
